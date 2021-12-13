@@ -28,7 +28,6 @@
     <div class="container">
         <div class="text-center mt-5">
             <h1>Squada</h1>
-            <p class
             <p class="lead">
                 Welcome to Squada!
                 Squada is an auction platform where football players who have not yet been assigned to a team are
