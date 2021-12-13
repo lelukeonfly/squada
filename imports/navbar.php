@@ -26,7 +26,7 @@
         </div>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="login.php">Login</a>
+                <a href="login.php"><button type="button" class="btn btn-secondary btn-sm" >Login</button></a>
             </li>
         </ul>
     </div>

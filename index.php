@@ -42,9 +42,8 @@
     <!-- Page content-->
     <div class="container">
         <div class="text-center mt-5">
-            <p class="lead"></p>
+            <h1 class="display-4">Welcome</h1>
         </div>
-        <h1 class="display-1"></h1>
     </div>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
