@@ -6,8 +6,7 @@
     require "imports/funktionen.inc.php";
 ?>
 <!DOCTYPE html>
-<html lang="de">
-
+<html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -21,25 +20,8 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- CSS-->
     <link rel="stylesheet" href="css/styles.css"/>
-</head> 
-
+</head>
 <body>
-    <!-- Page content-->
-    <div class="container">
-        <div class="text-center mt-5">
-            <h1>Squada</h1>
-            <p class
-            <p class="lead">
-                Welcome to Squada!
-                Squada is an auction platform where football players who have not yet been assigned to a team are
-                auctioned by the members of the Fanta Calcio group.</p>
-        </div>
-        <h1 class="display-1"></h1>
-    </div>
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS-->
-    <script src="js/scripts.js"></script>
+    
 </body>
-
 </html>
