@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Squada</title>
+    <title>Squada - LOGIN</title>
     <!-- Favicon-->
     <link rel="shortcut icon" type="image/png" href="assets/favicon.png" />
 
@@ -25,29 +25,29 @@
 </head>
 
 <body>
-    <div class="wrapper fadeInDown">
-        <div id="formContent">
-            <!-- Tabs Titles -->
 
-            <!-- Icon -->
-            <div class="fadeIn first">
-                <img src="logos/squada_logo_full_blank_transparent.png" id="icon" alt="Logo"/>
-            </div>
+    <body>
+        <div class="login-form">
+            <form action="login.php" method="post">
+                <h2 class="text-center">LOG IN</h2>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Loginname" required="required">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Passwort" required="required">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Log in</button>
+                </div>
 
-            <!-- Login Form -->
-            <form>
-                <input type="text" id="login" class="fadeIn second" name="login" placeholder="Loginname">
-                <input type="text" id="password" class="fadeIn third" name="login" placeholder="Passwort">
-                <input type="submit" class="fadeIn fourth" value="Login">
             </form>
-
-            <!-- Remind Passowrd -->
-            <div id="formFooter">
-                <a class="underlineHover" href="#">Forgot Password?</a>
-            </div>
-
+            <p class="text-center"><a href="#">Create an Account</a></p>
         </div>
-    </div>
-</body>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Custom JS-->
+        <script src="js/scripts.js"></script>
+
+    </body>
 
 </html>
