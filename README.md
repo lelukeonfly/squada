@@ -5,3 +5,4 @@ fußball auktionsplattform ohne auktionen
 
 - Vozodo: Bootstrap local insert
 - Login Fix with navbar
+- Create HTML Template for future uses
