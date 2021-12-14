@@ -4,6 +4,13 @@
 
     //Funktionen
     require "imports/funktionen.inc.php";
+
+    if(isset($_POST['loginname']) && isset($_POST['pwd'])){
+
+        log_in($_POST['loginname'], isset($_POST['pwd']));
+    }
+    
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,10 +38,10 @@
             <form action="login.php" method="post">
                 <h2 class="text-center">LOG IN</h2>
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Loginname" required="required">
+                    <input type="text" class="form-control" placeholder="Loginname" name="loginname" required>
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Passwort" required="required">
+                    <input type="password" class="form-control" placeholder="Passwort" name="pwd" required>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block">Log in</button>
