@@ -4,9 +4,14 @@ function get_db_connection() {
     $dbname = 'squada';
     $dbuser = 'squada';
     $dbpass = 'squada';
-    $dbprot = '3306';
 
-    return new PDO("mysql: host=$dbhost", "dbname=$dbname","port:$dbport", $dbuser, $dbpass);
+    return new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
+}
+
+function get_players(){
+    $db_connection = get_db_connection();
+    $query = "SELECT * FROM spieler";
+    return $db_connection->query($query);
 }
 
 function log_in($username, $pwd) {
@@ -28,7 +33,4 @@ function is_loged_in() {
 function get_username_by_id($id){
     
 }
-
-
-
 ?>
