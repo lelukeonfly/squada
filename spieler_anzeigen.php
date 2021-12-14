@@ -1,9 +1,9 @@
 <?php
     //Responsive navbar
-    require "imports/navbar.php";
+    require_once "imports/navbar.php";
 
     //Funktionen
-    require "imports/funktionen.inc.php";
+    require_once "imports/funktionen.inc.php";
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -28,7 +28,7 @@
     <div class="container">
         <div id="table_spieler_anzeigen">
             <?php
-                require_once 'imports/table_hacket.php';
+                require_once 'imports/table_spieler.php';
             ?>
         </div>
     </div>
