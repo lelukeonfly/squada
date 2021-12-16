@@ -17,10 +17,7 @@ function get_players(){
 function get_column_names($tablename)
 {
     $db_connection = get_db_connection();
-    $query = "SELECT `COLUMN_NAME` 
-FROM `INFORMATION_SCHEMA`.`COLUMNS` 
-WHERE `TABLE_SCHEMA`='squada' 
-    AND `TABLE_NAME`='$tablename';";
+    $query = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='squada' AND `TABLE_NAME`='$tablename';";
     return $db_connection->query($query);
 }
 
@@ -35,7 +32,6 @@ function log_in($username, $pwd) {
     $eintrag = $statement->fetch();
     var_dump($eintrag);
     if($eintrag != null) {
-
         if ($num == 1) {
             $_SESSION['user'] = $eintrag['id'];
             return true;
