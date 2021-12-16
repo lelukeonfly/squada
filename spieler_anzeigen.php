@@ -1,9 +1,16 @@
 <?php
+    session_start();
+
     //Responsive navbar
-    require_once "imports/navbar.php";
+    if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+        require_once "imports/menubar.php";
+    } 
+    else {
+        require_once "imports/navbar.php";
+    }
 
     //Funktionen
-    require_once "imports/funktionen.inc.php";
+    require "imports/funktionen.inc.php";
 ?>
 <!DOCTYPE html>
 <html lang="de">

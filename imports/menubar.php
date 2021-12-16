@@ -13,21 +13,16 @@
                 <li class="nav-item"><a class="nav-link" href="#">Zur Auktion</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+                        data-bs-toggle="dropdown" aria-expanded="false">[USER]</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item disabled" href="logout.php">User Settings</a></li>
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><a class="dropdown-item" href="logout.php">Log out</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item">Loged in</li>
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="logout.php">Log OUT</a></li>
-            </ul>
     </div>
 </nav>

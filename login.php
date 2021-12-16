@@ -2,7 +2,7 @@
     session_start();
 
     //Responsive navbar
-    if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {#
+    if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
         require_once "imports/menubar.php";
     } 
     else {
@@ -15,14 +15,11 @@
    if(isset($_POST['loginname']) && isset($_POST['pwd'])){
 
         $result = log_in($_POST['loginname'], $_POST['pwd']);
-        var_dump($result);
         if ($result == true) {
-            //header('Location: index.php');
-            echo "OK";
+            header('Location: index.php');
         }
         else {
             $result == false;
-            echo "ERR";
         }
    }
     
