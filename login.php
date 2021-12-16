@@ -15,14 +15,11 @@
    if(isset($_POST['loginname']) && isset($_POST['pwd'])){
 
         $result = log_in($_POST['loginname'], $_POST['pwd']);
-        var_dump($result);
         if ($result == true) {
-            //header('Location: index.php');
-            echo "OK";
+            header('Location: index.php');
         }
         else {
             $result == false;
-            echo "ERR";
         }
    }
     

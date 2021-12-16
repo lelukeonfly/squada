@@ -45,6 +45,18 @@ function log_in($username, $pwd) {
     }
 
 }
+
+function getTeamImage($team) {
+    $url = "https://content.fantacalcio.it/web/img/team/$team.png";
+
+    if (file_exists($url)) {
+        return $url;
+    }
+    else {
+        return false;
+    }
+
+}
     
 
 function is_loged_in() {
