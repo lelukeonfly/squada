@@ -21,17 +21,22 @@ function get_column_names($tablename)
     return $db_connection->query($query);
 }
 
+//Loggt den Benutzer mit den Jeweiligen Username und dem Pwd ein
 function log_in($username, $pwd) {
-        
+    
+    //Aufbau der DB Connection
     $db = get_db_connection();
 
+    //Absetzen der DB Query
     $query = "SELECT m.Loginname, m.Passwort, m.id FROM mannschaft m WHERE m.Loginname = '$username' AND m.Passwort = '$pwd'";
     $statement = $db->query($query);
 
     $num = $statement->rowCount(); 
     $eintrag = $statement->fetch();
-    //var_dump($eintrag);
+
+    //Überprüfen, ob der eintrag *nicht* null ist
     if($eintrag != null) {
+        //Wenn min. ein User errscheind wird in der Session die ID des eingeloggten Benutzers geschrieben
         if ($num == 1) {
             $_SESSION['user'] = $eintrag['id'];
             return true;
@@ -46,12 +51,18 @@ function log_in($username, $pwd) {
 
 }
 
+//Durch Playerinfos die Image URL bekommen und zurückgeben
 function getPlayerImage($playername, $cardyear = 2021){
 
+    //Die eingegebenen Werte in Caps umwandeln.
     $playername = strtoupper($playername);
+
     $url = "https://content.fantacalcio.it/web/campioncini/card$cardyear/$playername.png";
+    
+    //Wenn kein Img gefunden wird, wird ein general img verwendet.
     $noimage = "https://content.fantacalcio.it/web/campioncini/card2021/NO-CAMPIONCINO.png";
 
+    //Überprüfen ob das Image existiert
     if (!file_exists($url)) {
         return $url;
     }
@@ -62,11 +73,14 @@ function getPlayerImage($playername, $cardyear = 2021){
 
 }
 
-
+//Durch Teamnamen die Image URL bekommen und zurückgeben
 function getTeamImage($team) {
+
+    //Die eingegebenen Werte in Lowercase umwandeln
     $team = strtolower($team);
     $url = "https://content.fantacalcio.it/web/img/team/$team.png";
 
+    //Überprüfen, ob bild existiert
     if (!file_exists($url)) {
         return $url;
     }
@@ -76,9 +90,11 @@ function getTeamImage($team) {
 
 }
     
-
+//Überprüfen on User eingeloggt ist
 function is_loged_in() {
     $sol = false;
+
+    //In session nachsehen ob eintrag existiert
     if (isset($_SESSION['user'])) {
         if (!empty($_SESSION['user'])) {
             $sol = true;
