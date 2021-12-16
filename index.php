@@ -1,6 +1,7 @@
 <?php
     //Responsive navbar
     require "imports/navbar.php";
+    session_start();
 
     //Funktionen
     require "imports/funktionen.inc.php";

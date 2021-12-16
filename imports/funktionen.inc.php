@@ -2,8 +2,8 @@
 function get_db_connection() {
     $dbhost = 'localhost';
     $dbname = 'squada';
-    $dbuser = 'squada';
-    $dbpass = 'squada';
+    $dbuser = 'root';
+    $dbpass = '';
 
     return new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
 }
@@ -15,8 +15,6 @@ function get_players(){
 }
 
 function log_in($username, $pwd) {
-
-    if (isset($username) && isset($pwd)) {
         
     $db = get_db_connection();
 
@@ -25,9 +23,10 @@ function log_in($username, $pwd) {
 
     $num = $statement->rowCount(); 
     $eintrag = $statement->fetch();
+    var_dump($eintrag);
     if($eintrag != null) {
 
-        if ($num== 1) {
+        if ($num == 1) {
             $_SESSION['user'] = $eintrag['id'];
             return true;
         }
@@ -38,8 +37,9 @@ function log_in($username, $pwd) {
     else {
         return false;
     }
-    }
+
 }
+    
 
 function is_loged_in() {
     $sol = false;

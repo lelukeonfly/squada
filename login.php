@@ -1,14 +1,25 @@
 <?php
     //Responsive navbar
     require "imports/navbar.php";
+    
+    session_start();
 
     //Funktionen
     require "imports/funktionen.inc.php";
 
-    if(isset($_POST['loginname']) && isset($_POST['pwd'])){
+   if(isset($_POST['loginname']) && isset($_POST['pwd'])){
 
-        log_in($_POST['loginname'], isset($_POST['pwd']));
-    }
+        $result = log_in($_POST['loginname'], $_POST['pwd']);
+        var_dump($result);
+        if ($result == true) {
+            header('Location: index.php');
+            echo "OK";
+        }
+        else {
+            $result == false;
+            echo "ERR";
+        }
+   }
     
 
 ?>
@@ -46,7 +57,10 @@
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block">Log in</button>
                 </div>
-
+                <?php 
+                if (isset($result) && $result == false) { ?>
+                <p>Login faild!</p>
+                <?php }?>
             </form>
             <p class="text-center"><a href="#">Create an Account</a></p>
         </div>
