@@ -1,4 +1,4 @@
-<table class="table">
+<table id="player" class="table table-striped">
     <?php
         $x = true;
         foreach(get_players() as $player){
