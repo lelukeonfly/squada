@@ -2,7 +2,7 @@
     session_start();
 
     //Responsive navbar
-    if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {#
+    if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
         require_once "imports/menubar.php";
     } 
     else {

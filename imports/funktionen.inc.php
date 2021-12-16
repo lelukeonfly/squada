@@ -57,6 +57,8 @@ function getTeamImage($team) {
     }
 
 }
+
+function
     
 
 function is_loged_in() {
