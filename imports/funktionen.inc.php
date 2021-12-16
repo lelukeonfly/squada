@@ -10,8 +10,8 @@ function get_db_connection() {
 
 function get_players(){
     $db_connection = get_db_connection();
-    $query = "SELECT * FROM spieler";
-    return $db_connection->query($query);
+    $query = "SELECT spieler.name, spieler.position, spieler.mannschaft FROM spieler";
+    return $db_connection->query($query, PDO::FETCH_ASSOC);
 }
 
 function get_column_names($tablename)

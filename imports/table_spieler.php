@@ -6,12 +6,10 @@
             ?>
             <thead>
                 <?php
-                    foreach(get_column_names('spieler') as $colname){
-                        foreach($colname as $row){
+                    foreach($player as $column_header => $data){
                         ?>
-                        <th scope="col"><?=$row?></th>
+                        <th><?=ucfirst($column_header);?></th>
                         <?php
-                        }
                         $x = false;
                     }
                 ?>

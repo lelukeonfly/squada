@@ -27,8 +27,7 @@
     <div class="container">
         <div id="table_spieler_anzeigen">
             <?php
-                #require_once 'imports/table_spieler.php';
-                require_once 'imports/test.php';
+                require_once 'imports/table_spieler.php';
             ?>
         </div>
     </div>
