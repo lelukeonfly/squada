@@ -8,7 +8,7 @@
                 <?php
                     foreach($player as $column_header => $data){
                         ?>
-                        <th><?=$column_header;?></th>
+                        <th><?=ucfirst($column_header);?></th>
                         <?php
                         $x = false;
                     }
