@@ -1,16 +1,15 @@
 <?php
-    session_start();
+session_start();
 
-    //Responsive navbar
-    if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
-        require_once "imports/menubar.php";
-    } 
-    else {
-        require_once "imports/navbar.php";
-    }
+//Responsive navbar
+if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+    require_once "imports/menubar.php";
+} else {
+    require_once "imports/navbar.php";
+}
 
-    //Funktionen
-    require "imports/funktionen.inc.php";
+//Funktionen
+require "imports/funktionen.inc.php";
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -25,7 +24,7 @@
     <!-- Favicon-->
     <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico?"  />
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico?" />
     <!-- CSS-->
     <link rel="stylesheet" href="scss/index.css" />
 </head>
@@ -51,8 +50,27 @@
             <h1 class="display-4">Welcome</h1>
 
             <h1 class="display-4">News</h1>
+            <div class="container">
+                <?php
+                $rss = simplexml_load_file('https://rss.fantacalcio.it/');
+                $limitnews = 6;
+                $i = 1;
+                ?>
+                <div class="row">
+                    <?php foreach ($rss->channel->item as $item) if ($i++ <= 6) { ?>
+                        <div class="col-md-4">
+                            <h2><a href="<?= $item->link ?>"> <?= $item->title ?></a></h2>
+                            <p><?= $item->description ?></p>
+                        </div>
 
+                    <?php } ?>
+                </div>
+
+            </div>
         </div>
+    </div>
+
+    </div>
     </div>
     <!-- Bootstrap JS -->
     <script src="js/jquery-3.3.1.slim.min.js"></script>
