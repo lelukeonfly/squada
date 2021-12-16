@@ -30,7 +30,7 @@ function log_in($username, $pwd) {
 
     $num = $statement->rowCount(); 
     $eintrag = $statement->fetch();
-    var_dump($eintrag);
+    //var_dump($eintrag);
     if($eintrag != null) {
         if ($num == 1) {
             $_SESSION['user'] = $eintrag['id'];
@@ -46,10 +46,27 @@ function log_in($username, $pwd) {
 
 }
 
+function getPlayerImage($playername, $cardyear = 2021){
+
+    $playername = strtoupper($playername);
+    $url = "https://content.fantacalcio.it/web/campioncini/card$cardyear/$playername.png";
+    $noimage = "https://content.fantacalcio.it/web/campioncini/card2021/NO-CAMPIONCINO.png";
+
+    if (!file_exists($url)) {
+        return $url;
+    }
+    else {
+        return $noimage;
+    }
+
+
+}
+
+
 function getTeamImage($team) {
     $url = "https://content.fantacalcio.it/web/img/team/$team.png";
 
-    if (file_exists($url)) {
+    if (!file_exists($url)) {
         return $url;
     }
     else {

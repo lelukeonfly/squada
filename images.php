@@ -1,21 +1,21 @@
 <?php
-    session_start();
+   //Funktionen
+   require "imports/funktionen.inc.php";
 
-    //Responsive navbar
-    if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
-        require_once "imports/menubar.php";
-    } 
-    else {
-        require_once "imports/navbar.php";
-    }
 
-    //Funktionen
-    require "imports/funktionen.inc.php";
-
+if (isset($_GET['team'])) {
     $src = getTeamImage($_GET['team']);
-
-    var_dump($src);
+    echo "<img src=" . $src . " />";
+}
+else {
+    echo "no";
+}
 ?>
+<html>
+    <form action="images.php" method="get">
+        <input type="text" placeholder="team" name="team">
+        <input type="submit">
+    </form>
+</html>
 
 
-<img src="$src" />
