@@ -14,6 +14,16 @@ function get_players(){
     return $db_connection->query($query);
 }
 
+function get_column_names($tablename)
+{
+    $db_connection = get_db_connection();
+    $query = "SELECT `COLUMN_NAME` 
+FROM `INFORMATION_SCHEMA`.`COLUMNS` 
+WHERE `TABLE_SCHEMA`='squada' 
+    AND `TABLE_NAME`='$tablename';";
+    return $db_connection->query($query);
+}
+
 function log_in($username, $pwd) {
         
     $db = get_db_connection();
