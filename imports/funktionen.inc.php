@@ -64,6 +64,7 @@ function getPlayerImage($playername, $cardyear = 2021){
 
 
 function getTeamImage($team) {
+    $team = strtolower($team);
     $url = "https://content.fantacalcio.it/web/img/team/$team.png";
 
     if (!file_exists($url)) {
