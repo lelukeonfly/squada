@@ -28,7 +28,7 @@ function log_in($username, $pwd) {
         
     $db = get_db_connection();
 
-    $query = "SELECT m.Loginname, m.Passwort FROM mannschaft m WHERE m.Loginname = '$username' AND m.Passwort = '$pwd'";
+    $query = "SELECT m.Loginname, m.Passwort, m.id FROM mannschaft m WHERE m.Loginname = '$username' AND m.Passwort = '$pwd'";
     $statement = $db->query($query);
 
     $num = $statement->rowCount(); 
