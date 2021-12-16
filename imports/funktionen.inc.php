@@ -103,6 +103,16 @@ function is_loged_in() {
     return $sol;
 }
 
+//Dar
+function setdarkmode($switch = false) {
+    if ($switch == true) {
+        $_SESSION['darkmode'] = true;
+    }
+    else {
+        $_SESSION['darkmode'] = false;
+    }
+}
+
 function get_username_by_id($id){
     
 }
