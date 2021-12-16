@@ -1,6 +1,9 @@
 <?php
     session_start();
 
+    //Funktionen
+    require_once "imports/funktionen.inc.php";
+
     //Responsive navbar
     if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
         require_once "imports/menubar.php";
@@ -9,8 +12,7 @@
         require_once "imports/navbar.php";
     }
 
-    //Funktionen
-    require_once "imports/funktionen.inc.php";
+ 
 
    if(isset($_POST['loginname']) && isset($_POST['pwd'])){
 
@@ -26,21 +28,22 @@
 
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="de">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Squada - LOGIN</title>
-    <!-- BOOTSTRAP -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Squada - Login</title>
+
     <!-- Favicon-->
-    <link rel="shortcut icon" type="image/png" href="assets/favicon.png" />
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico?" />
+
     <!-- CSS-->
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="css/login.css" />
+    <link rel="stylesheet" href="scss/login.css" />
 </head>
 
 <body>
@@ -65,10 +68,9 @@
             </form>
             <p class="text-center"><a href="#">Create an Account</a></p>
         </div>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Custom JS-->
-        <script src="js/scripts.js"></script>
+        <!-- Bootstrap JS -->
+        <script src="js/jquery-3.3.1.slim.min.js"></script>
+        <script src="js/bootstrap/bootstrap.bundle.min.js"></script>
 
     </body>
 
