@@ -56,18 +56,21 @@ function getPlayerImage($playername, $cardyear = 2021){
 
     //Die eingegebenen Werte in Caps umwandeln.
     $playername = strtoupper($playername);
+    $arr = explode(" ", $playername, 2);
+    $first = $arr[0];
 
-    $url = "https://content.fantacalcio.it/web/campioncini/card$cardyear/$playername.png";
+    $url = "https://content.fantacalcio.it/web/campioncini/card$cardyear/$first.png";
+    $image_type_check = @exif_imagetype($url);//Get image type + check if exists
     
     //Wenn kein Img gefunden wird, wird ein general img verwendet.
     $noimage = "https://content.fantacalcio.it/web/campioncini/card2021/NO-CAMPIONCINO.png";
 
     //Überprüfen ob das Image existiert
-    if (!file_exists($url)) {
-        return $url;
+    if (strpos($http_response_header[0], "403") || strpos($http_response_header[0], "404") || strpos($http_response_header[0], "302") || strpos($http_response_header[0], "301") ) {
+        return $noimage;
     }
     else {
-        return $noimage;
+        return $url;
     }
 
 
@@ -115,5 +118,9 @@ function setdarkmode($switch = false) {
 
 function get_username_by_id($id){
     
+}
+
+function bieten(){
+
 }
 ?>
