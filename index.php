@@ -58,10 +58,14 @@ require "imports/funktionen.inc.php";
                 ?>
                 <div class="row">
                     <?php foreach ($rss->channel->item as $item) if ($i++ <= 6) { ?>
-                        <div class="col-md-4">
-                            <h2><a href="<?= $item->link ?>"> <?= $item->title ?></a></h2>
-                            <p><?= $item->description ?></p>
-                        </div>
+                    <div class="col-md-4">
+                        <h2><a href="<?= $item->link ?>">
+                                <?= $item->title ?>
+                            </a></h2>
+                        <p>
+                            <?= $item->description ?>
+                        </p>
+                    </div>
 
                     <?php } ?>
                 </div>
@@ -72,6 +76,10 @@ require "imports/funktionen.inc.php";
 
     </div>
     </div>
+
+    <!-- FOOTER -->
+    <?php include "imports/footer.php" ?>
+
     <!-- Bootstrap JS -->
     <script src="js/jquery-3.3.1.slim.min.js"></script>
     <script src="js/bootstrap/bootstrap.bundle.min.js"></script>

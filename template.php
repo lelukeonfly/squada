@@ -1,16 +1,15 @@
 <?php
-    session_start();
+session_start();
 
-    //Responsive navbar
-    if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
-        require_once "imports/menubar.php";
-    } 
-    else {
-        require_once "imports/navbar.php";
-    }
+//Responsive navbar
+if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+    require_once "imports/menubar.php";
+} else {
+    require_once "imports/navbar.php";
+}
 
-    //Funktionen
-    require "imports/funktionen.inc.php";
+//Funktionen
+require "imports/funktionen.inc.php";
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -38,6 +37,9 @@
             <p>OK</p>
         </div>
     </div>
+
+    <!-- FOOTER -->
+    <?php include "imports/footer.php" ?>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS-->
