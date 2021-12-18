@@ -24,6 +24,8 @@ function get_column_names($tablename)
 //Loggt den Benutzer mit den Jeweiligen Username und dem Pwd ein
 function log_in($username, $pwd) {
     
+    
+
     //Aufbau der DB Connection
     $db = get_db_connection();
 
