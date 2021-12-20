@@ -14,12 +14,20 @@ function get_players(){
     return $db_connection->query($query, PDO::FETCH_ASSOC);
 }
 
-function get_column_names($tablename)
+function get_player($id)
 {
     $db_connection = get_db_connection();
-    $query = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='squada' AND `TABLE_NAME`='$tablename';";
-    return $db_connection->query($query);
+    $query = "SELECT spieler.name, spieler.position, spieler.mannschaft FROM spieler WHERE spieler.id LIKE $id";
+    $statement = $db_connection->query($query, PDO::FETCH_ASSOC);
+    return $statement->fetch();
 }
+
+#function get_column_names($tablename)
+#{
+#    $db_connection = get_db_connection();
+#    $query = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='squada' AND `TABLE_NAME`='$tablename';";
+#    return $db_connection->query($query);
+#}
 
 //Loggt den Benutzer mit den Jeweiligen Username und dem Pwd ein
 function log_in($username, $pwd) {
