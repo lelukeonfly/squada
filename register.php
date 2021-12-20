@@ -5,11 +5,23 @@ session_start();
 if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
     require_once "imports/menubar.php";
 } else {
-    require_once "imports/navbar.php";
+    header('Location: index.php');
 }
 
 //Funktionen
 require "imports/funktionen.inc.php";
+
+if ($_POST) {
+    $name = $_POST['name'];
+    $loginname = $_POST['loginname'];
+    $pwd = $_POST['passwort'];
+    $guthaben = $_POST['guthaben'];
+
+    $res = register($loginname, $pwd, $name, $guthaben);
+
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -33,27 +45,39 @@ require "imports/funktionen.inc.php";
     <!-- Page content-->
     <div class="container">
         <div class="text-center mt-5">
-        <form action="register.php" method="post">
+            <?php if (!$_POST) { ?>
+            <form action="register.php" method="post">
                 <div class="form-group">
                     <label>Name</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="name" placeholder="Enter Name">
-                    <small id="emailHelp" class="form-text text-muted">Please make sure that the correct name is entered.</small>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        name="name" placeholder="Enter Name" required>
+                    <small id="emailHelp" class="form-text text-muted">Please make sure that the correct name is
+                        entered.</small>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Loginname</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" name="loginname" placeholder="Loginname">
+                    <input type="text" class="form-control" id="exampleInputPassword1" name="loginname"
+                        placeholder="Loginname">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Passwort</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" name="passwort" placeholder="Password">
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="passwort"
+                        placeholder="Password">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Set Guthaben</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" name="guthaben" placeholder="Guthaben">
+                    <input type="text" class="form-control" id="exampleInputPassword1" name="guthaben"
+                        placeholder="Guthaben">
                 </div>
-                
+
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+            <?php }  elseif ($_POST) { ?>
+                <?php if ($res == true) { ?>
+                    <p>Sucess: insert data</p>
+                <?php } else { ?>
+                    <p>Logine faild</p>
+            <?php }} ?>
         </div>
     </div>
 
