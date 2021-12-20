@@ -27,10 +27,13 @@
     <link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
     <!-- CSS-->
     <link rel="stylesheet" href="css/styles.css"/>
-    <!-- <script src="scripts/datatable.js"></script> -->
+    <link rel="stylesheet" href="scss/table.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.1.0/css/buttons.bootstrap5.min.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 </head> 
 
