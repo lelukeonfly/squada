@@ -32,24 +32,30 @@ function get_player($id)
 //Loggt den Benutzer mit den Jeweiligen Username und dem Pwd ein
 function log_in($username, $pwd) {
     
-    
-
     //Aufbau der DB Connection
     $db = get_db_connection();
+    $hashed_password = password_hash($pwd, PASSWORD_DEFAULT);
 
     //Absetzen der DB Query
-    $query = "SELECT m.Loginname, m.Passwort, m.id FROM mannschaft m WHERE m.Loginname = '$username' AND m.Passwort = '$pwd'";
+    $query = "SELECT m.Loginname, m.Passwort, m.id FROM mannschaft m WHERE m.Loginname = '$username'";
     $statement = $db->query($query);
 
     $num = $statement->rowCount(); 
     $eintrag = $statement->fetch();
+     
+    $hash = $eintrag['Passwort'];
+    
 
     //Überprüfen, ob der eintrag *nicht* null ist
     if($eintrag != null) {
         //Wenn min. ein User errscheind wird in der Session die ID des eingeloggten Benutzers geschrieben
         if ($num == 1) {
-            $_SESSION['user'] = $eintrag['id'];
-            return true;
+            if (password_verify($pwd, $hash)) {
+                $_SESSION['user'] = $eintrag['id'];
+                return true;
+            } else {
+                return false;
+            }
         }
         else {
             return false;
@@ -124,6 +130,29 @@ function setdarkmode($switch = false) {
     else {
         $_SESSION['darkmode'] = false;
     }
+}
+
+function register($loginname, $pwd, $name, $guthaben) {
+    $db_connection = get_db_connection();
+
+    $checkquery = "SELECT * FROM mannschaft m WHERE m.Loginname = '$loginname'";
+    $check = $db_connection->query($checkquery, PDO::FETCH_ASSOC); 
+
+    $num = $check->rowCount(); 
+    if ($num >= 1) {
+        return false;
+    }
+    else {
+        $hashed_password = password_hash($pwd, PASSWORD_DEFAULT);
+        $query = "INSERT INTO mannschaft(ID, Name, Loginname, Passwort, Guthaben) VALUES (NULL, '$loginname', '$name', '$hashed_password', $guthaben)";
+        
+        $res = $db_connection->query($query, PDO::FETCH_ASSOC);
+        
+        return true;
+       
+    }
+   
+
 }
 
 function get_username_by_id($id){
