@@ -8,8 +8,15 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
     header('Location: index.php');
 }
 
+
 //Funktionen
 require_once "imports/funktionen.inc.php";
+
+//Admin only
+$user = getUsername($_SESSION['user']);
+if ($user['Loginname'] != "ADMIN") {
+    header('Location: index.php');
+}
 
 if ($_POST) {
     $name = $_POST['name'];
