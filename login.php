@@ -18,7 +18,7 @@
 
         $result = log_in($_POST['loginname'], $_POST['pwd']);
         if ($result == true) {
-            header('Location: index.php');
+            header('Location: dashboard.php');
         }
         else {
             $result == false;
@@ -66,7 +66,6 @@
                 <p>Login faild!</p>
                 <?php }?>
             </form>
-            <p class="text-center"><a href="#">Create an Account</a></p>
         </div>
         <!-- Bootstrap JS -->
         <script src="js/jquery-3.3.1.slim.min.js"></script>

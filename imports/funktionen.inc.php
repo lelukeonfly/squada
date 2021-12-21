@@ -1,4 +1,5 @@
 <?php
+
 function get_db_connection() {
     $dbhost = 'localhost';
     $dbname = 'squada';
@@ -6,6 +7,18 @@ function get_db_connection() {
     $dbpass = '';
 
     return new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
+}
+
+function SETADMIN($username, $password){
+
+    $db_connection = get_db_connection();
+
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    $query = "INSERT INTO mannschaft(ID, Name, Loginname, Passwort, Guthaben) VALUES (NULL, '$username', 'ADMIN', '$hashed_password', -1)";
+    
+    $res = $db_connection->query($query, PDO::FETCH_ASSOC);
+
+
 }
 
 function get_players(){
@@ -156,8 +169,15 @@ function register($loginname, $pwd, $name, $guthaben) {
 
 }
 
-function get_username_by_id($id){
-    
+function getUsername($id){
+    $db_connection = get_db_connection();
+
+    $query = "SELECT m.* FROM mannschaft m WHERE m.ID = $id";
+
+    $statement = $db_connection->query($query); 
+    $eintrag = $statement->fetch();
+
+    return $eintrag;
 }
 
 function bieten(){
