@@ -2,7 +2,7 @@
 session_start();
 
 //Funktionen
-require "imports/funktionen.inc.php";
+require_once "imports/funktionen.inc.php";
 
 $players = get_players();
 ?>
