@@ -37,7 +37,7 @@ function log_in($username, $pwd) {
     $hashed_password = password_hash($pwd, PASSWORD_DEFAULT);
 
     //Absetzen der DB Query
-    $query = "SELECT m.Loginname, m.Passwort, m.id FROM mannschaft m WHERE m.Loginname = '$username'";
+    $query = "SELECT m.Loginname, m.Passwort, m.id, m.name FROM mannschaft m WHERE m.Loginname = '$username'";
     $statement = $db->query($query);
 
     $num = $statement->rowCount(); 
@@ -52,6 +52,7 @@ function log_in($username, $pwd) {
         if ($num == 1) {
             if (password_verify($pwd, $hash)) {
                 $_SESSION['user'] = $eintrag['id'];
+                $_SESSION['name'] = $eintrag['name'];
                 return true;
             } else {
                 return false;
