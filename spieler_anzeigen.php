@@ -10,7 +10,7 @@
     }
 
     //Funktionen
-    require "imports/funktionen.inc.php";
+    require_once "imports/funktionen.inc.php";
 ?>
 <!DOCTYPE html>
 <html lang="de">

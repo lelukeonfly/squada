@@ -9,7 +9,7 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
 }
 
 //Funktionen
-require "imports/funktionen.inc.php";
+require_once "imports/funktionen.inc.php";
 
 if ($_POST) {
     $name = $_POST['name'];
