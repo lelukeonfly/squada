@@ -38,7 +38,7 @@ if ($_POST) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Squada</title>
+    <title>Squada - Register</title>
 
     <!-- Favicon-->
     <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
@@ -46,9 +46,12 @@ if ($_POST) {
     <link rel="icon" type="image/x-icon" href="img/favicon.ico?" />
     <!-- CSS-->
     <link rel="stylesheet" href="scss/style.css" />
+
+    <!-- Font Awsome -->
+    <script src="https://kit.fontawesome.com/f072a47e74.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     <!-- Page content-->
     <div class="container">
         <div class="text-center mt-5">
@@ -81,9 +84,20 @@ if ($_POST) {
             </form>
             <?php }  elseif ($_POST) { ?>
                 <?php if ($res == true) { ?>
-                    <p>Sucess: insert data</p>
+                    
+                    <div class="alert alert-success" role="alert">
+                        <p><i class="fas fa-check-circle fa-7x"></i></p>
+                        <p>User Created</p>
+                    </div>
+                    <a href="dashboard.php"><button type="button" class="btn btn-primary btn-lg btn-block">Back to Home</button></a>
                 <?php } else { ?>
-                    <p>Logine faild</p>
+                    <div class="alert alert-danger" role="alert">
+                        <p><i class="fas fa-times-circle fa-7x"></i></p>
+                        <p>Creation Failed!</p>
+                        <p>Error: <?= $res ?></p>
+                    </div>
+                    <a href="dashboard.php"><button type="button" class="btn btn-primary btn-lg btn-block">Back to Home</button></a>
+
             <?php }} ?>
         </div>
     </div>

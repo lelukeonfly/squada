@@ -29,7 +29,7 @@ require_once "imports/funktionen.inc.php";
     <link rel="stylesheet" href="scss/index.css" />
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     <!-- Page Image-->
     <header class="header">
         <div class="container h-100">

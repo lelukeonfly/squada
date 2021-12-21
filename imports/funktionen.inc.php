@@ -151,6 +151,7 @@ function register($loginname, $pwd, $name, $guthaben) {
 
     $checkquery = "SELECT * FROM mannschaft m WHERE m.Loginname = '$loginname'";
     $check = $db_connection->query($checkquery, PDO::FETCH_ASSOC); 
+    $usr = $check->fetch();
 
     $num = $check->rowCount(); 
     if ($num >= 1) {
