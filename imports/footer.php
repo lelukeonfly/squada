@@ -37,3 +37,6 @@
             </div>
         </div>
     </footer>
+
+    <!-- Font Awsome -->
+    <script src="https://kit.fontawesome.com/f072a47e74.js" crossorigin="anonymous"></script>

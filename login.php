@@ -71,6 +71,9 @@
         <script src="js/jquery-3.3.1.slim.min.js"></script>
         <script src="js/bootstrap/bootstrap.bundle.min.js"></script>
 
+        <!-- Font Awsome -->
+        <script src="https://kit.fontawesome.com/f072a47e74.js" crossorigin="anonymous"></script>
+
     </body>
 
 </html>

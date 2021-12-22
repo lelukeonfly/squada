@@ -17,16 +17,20 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false"><?=$_SESSION['name'] ?></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item disabled" href="logout.php">User Settings</a></li>
+                        <li><a class="dropdown-item disabled" href="logout.php"><i class="fas fa-cog"></i> User Settings</a></li>
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
-                        <li><a class="dropdown-item" href="logout.php">Log out</a></li>
+                        <li><a class="dropdown-item" href="settings.php"><i class="fas fa-user-cog"></i> Settings</a></li>
+                        <li><a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt"></i> Log out</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+
+<!-- Font Awsome -->
+<script src="https://kit.fontawesome.com/f072a47e74.js" crossorigin="anonymous"></script>
 
 

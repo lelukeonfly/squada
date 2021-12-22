@@ -51,7 +51,7 @@ function log_in($username, $pwd) {
 
     //Absetzen der DB Query
     $query = "SELECT m.Loginname, m.Passwort, m.id, m.name FROM mannschaft m WHERE m.Loginname = '$username'";
-    $statement = $db->query($query);
+    $statement = $db->query($query, PDO::FETCH_ASSOC);
 
     $num = $statement->rowCount(); 
     $eintrag = $statement->fetch();
@@ -124,7 +124,7 @@ function getTeamImage($team) {
 }
     
 //Überprüfen on User eingeloggt ist
-function is_loged_in() {
+function is_logged_in() {
     $sol = false;
 
     //In session nachsehen ob eintrag existiert
@@ -136,15 +136,6 @@ function is_loged_in() {
     return $sol;
 }
 
-//Dar
-function setdarkmode($switch = false) {
-    if ($switch == true) {
-        $_SESSION['darkmode'] = true;
-    }
-    else {
-        $_SESSION['darkmode'] = false;
-    }
-}
 
 function register($loginname, $pwd, $name, $guthaben) {
     $db_connection = get_db_connection();
@@ -159,7 +150,7 @@ function register($loginname, $pwd, $name, $guthaben) {
     }
     else {
         $hashed_password = password_hash($pwd, PASSWORD_DEFAULT);
-        $query = "INSERT INTO mannschaft(ID, Name, Loginname, Passwort, Guthaben) VALUES (NULL, '$loginname', '$name', '$hashed_password', $guthaben)";
+        $query = "INSERT INTO mannschaft(ID, Name, Loginname, Passwort, Guthaben) VALUES (NULL, '$name', '$loginname', '$hashed_password', $guthaben)";
         
         $res = $db_connection->query($query, PDO::FETCH_ASSOC);
         
@@ -175,10 +166,51 @@ function getUsername($id){
 
     $query = "SELECT m.* FROM mannschaft m WHERE m.ID = $id";
 
-    $statement = $db_connection->query($query); 
+    $statement = $db_connection->query($query, PDO::FETCH_ASSOC); 
     $eintrag = $statement->fetch();
 
     return $eintrag;
+}
+
+function getTeuerstenPlayer() {
+
+    $db_connection = get_db_connection();
+
+    $query = "SELECT MAX(ba.Preis), s.Name FROM bietet_auf ba JOIN spieler s ON s.ID = ba.spieler_fk JOIN mannschaft m  ON m.ID = ba.mannschaft_fk";
+
+    $statement = $db_connection->query($query, PDO::FETCH_ASSOC);
+    $spieler = $statement->fetch();
+
+    return $spieler;
+}
+
+function seeOfferedPlayers($id){
+
+
+    $db_connection = get_db_connection();
+
+    $query = "SELECT ba.Preis, s.Name, s.Position, s.Mannschaft FROM bietet_auf ba JOIN spieler s ON s.ID = ba.spieler_fk WHERE ba.mannschaft_fk = $id";
+
+    $statement = $db_connection->query($query, PDO::FETCH_ASSOC);
+    $offers = $statement->fetchAll();
+
+    return $offers;
+}
+
+function changeUsersettings($id, $newname, $newloginname, $newpassword) {
+    $newpassword = password_hash($newpassword, PASSWORD_DEFAULT);
+    $query = "UPDATE mannschaft SET Name = '$newname', Loginname = '$newloginname', Passwort = '$newpassword' WHERE mannschaft.ID = $id";
+    $db_connection = get_db_connection();
+
+    $statement = $db_connection->query($query, PDO::FETCH_ASSOC);
+
+    return $statement->execute();
+
+    
+}
+
+function setGuthaben($id){
+
 }
 
 function bieten(){
