@@ -46,8 +46,6 @@
     <link rel="stylesheet" href="scss/login.css" />
 </head>
 
-<body>
-
     <body>
         <div class="login-form">
             <form action="login.php" method="post">
