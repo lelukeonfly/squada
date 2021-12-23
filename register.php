@@ -13,8 +13,7 @@ if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
 require_once "imports/funktionen.inc.php";
 
 //Admin only
-$user = getUsername($_SESSION['user']);
-if ($user['Loginname'] != "ADMIN") {
+if (hasAdminPermissions($_SESSION['user']) == false) {
     header('Location: index.php');
 }
 

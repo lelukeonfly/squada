@@ -209,6 +209,22 @@ function changeUsersettings($id, $newname, $newloginname, $newpassword) {
     
 }
 
+function hasAdminPermissions($id) {
+    $query = "SELECT a.permission, m.ID FROM mannschaft m JOIN admin a ON m.ID = a.mannschaft_fk WHERE m.ID = $id";
+
+    $db_connection = get_db_connection();
+
+    $statement = $db_connection->query($query, PDO::FETCH_ASSOC);
+
+    $per = $statement->fetch();
+
+    if ($per['permission'] == 1)
+        return true;
+    else
+        return false;
+
+}
+
 function setGuthaben($id){
 
 }
