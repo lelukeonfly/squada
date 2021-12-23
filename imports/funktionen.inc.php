@@ -47,7 +47,6 @@ function log_in($username, $pwd) {
     
     //Aufbau der DB Connection
     $db = get_db_connection();
-    $hashed_password = password_hash($pwd, PASSWORD_DEFAULT);
 
     //Absetzen der DB Query
     $query = "SELECT m.Loginname, m.Passwort, m.id, m.name FROM mannschaft m WHERE m.Loginname = '$username'";
@@ -79,6 +78,43 @@ function log_in($username, $pwd) {
         return false;
     }
 
+}
+
+function adminLog_in($username, $pwd){
+   
+    //Aufbau der DB Connection
+    $db = get_db_connection();
+
+    //Absetzen der DB Query
+    $query = "SELECT a.Name, a.Password FROM admin a WHERE a.Name = '$username'";
+    $statement = $db->query($query, PDO::FETCH_ASSOC);
+
+    $num = $statement->rowCount(); 
+    $eintrag = $statement->fetch();
+     
+    $hash = $eintrag['Passwort'];
+    
+
+    //Überprüfen, ob der eintrag *nicht* null ist
+    if($eintrag != null) {
+        //Wenn min. ein User errscheind wird in der Session die ID des eingeloggten Benutzers geschrieben
+        if ($num == 1) {
+            if (password_verify($pwd, $hash)) {
+                $_SESSION['user'] = $eintrag['id'];
+                $_SESSION['name'] = $eintrag['name'];
+                $_SESSION['admin'] = true;
+                return true;
+            } else
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
+    }
+    else {
+        return false;
+    }
 }
 
 //Durch Playerinfos die Image URL bekommen und zurückgeben
